@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    
+    <script data-require="angular.js@*" data-semver="1.4.0-beta.1" src="https://code.angularjs.org/1.4.0-beta.1/angular.js">
+      
+    </script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+
+  <body ng-controller="MainCtrl ">
+    <h4>Filter-Actions</h1>
+    <div style="margin-bottom: 10px;">
+      <button 
+              ng-repeat="filterType in FILTER_TYPES"
+              style="display:inline-block;margin:3px;"
+              ng-click="onFilterClick(filterType)">
+         {{filterType.key}}
+      </button>
+    </div>
+  <div>
+    <input type="text" placeholder="Enter value" ng-model="input" ng-keypress="checkIfEnterKeyWasPressed($event)" />
+   </div>
+    
+    <div>
+      <ul>
+        <li 
+            ng-repeat="listItem in getTodoList()" 
+            ng-click="onListClick(listItem)"
+            class="{{FILTER_TYPES[listItem.filterType].name}}">{{listItem.name }} {{listItem.filterType}}
+            
+        </li>
+      
+    </div>
+    
+    
+  </body>
+<script src="index.js"> </script>
+</html>
